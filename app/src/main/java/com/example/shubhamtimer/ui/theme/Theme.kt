@@ -9,13 +9,15 @@ import androidx.compose.runtime.Composable
 private val DarkColorPalette = darkColors(
     primary = Purple200,
     primaryVariant = Purple700,
-    secondary = Teal200
-)
+    secondary = Teal200,
+    secondaryVariant = GreenA700
+    )
 
 private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
-    secondary = Teal200
+    secondary = Teal200,
+    secondaryVariant = GreenA400
 
     /* Other default colors to override
     background = Color.White,
@@ -35,9 +37,15 @@ fun ShubhamTimerTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Comp
         LightColorPalette
     }
 
+    val typography = if (darkTheme) {
+        TypographyDark
+    } else {
+        Typography
+    }
+
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = typography,
         shapes = Shapes,
         content = content
     )
