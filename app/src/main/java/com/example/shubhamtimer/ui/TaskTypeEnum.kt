@@ -22,5 +22,5 @@ enum class TaskTypeEnum(
     FOOD(
         icon = R.drawable.ic_fork_knife,
         title = "Food"
-    ),
+    );
 }

@@ -25,8 +25,7 @@ import com.example.shubhamtimer.ui.theme.*
 
 @Composable
 fun TaskTypeItem(
-    icon: Int = TaskTypeEnum.PRIORITY.icon,
-    title: String = TaskTypeEnum.PRIORITY.title
+    item: TaskTypeEnum = TaskTypeEnum.PRIORITY
 ) {
     var isSelected by remember { mutableStateOf(false) }
 
@@ -43,7 +42,7 @@ fun TaskTypeItem(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
-            painter = painterResource(id = icon),
+            painter = painterResource(id = item.icon),
             contentDescription = null,
             tint = setIconColor(
                 isSelected = isSelected,
@@ -55,7 +54,7 @@ fun TaskTypeItem(
                 .background(iconBackground),
         )
         Text(
-            text = title,
+            text = item.title,
             color = setIconTitleColor(
                 isSelected = isSelected,
                 isDarkMode = isSystemInDarkTheme()
