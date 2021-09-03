@@ -9,12 +9,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,7 +27,7 @@ class MainActivity : ComponentActivity() {
             ShubhamTimerTheme {
                 Scaffold(
                     backgroundColor = MaterialTheme.colors.background,
-                    content = {MainContent()}
+                    content = { MainContent() }
                 )
             }
         }
@@ -44,7 +42,12 @@ fun MainContent() {
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        Header()
+        Text(
+            modifier = Modifier.padding(16.dp),
+            text = "New Task",
+            style = MaterialTheme.typography.h4,
+            fontWeight = FontWeight.Bold,
+        )
         TaskForm()
     }
 }
@@ -62,18 +65,5 @@ fun MainContent() {
 fun PreviewMainContent() {
     ShubhamTimerTheme {
         MainContent()
-    }
-}
-
-@Composable
-fun Header() {
-    Column(
-        modifier = Modifier.padding(16.dp)
-    ) {
-        Text(
-            text = "New Task",
-            style = MaterialTheme.typography.h4,
-            fontWeight = FontWeight.Bold,
-        )
     }
 }
