@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.ui.component.TaskForm
+import com.example.shubhamtimer.ui.component.TaskTypeList
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -49,6 +50,7 @@ fun MainContent() {
             fontWeight = FontWeight.Bold,
         )
         TaskForm()
+        TaskTypeList()
     }
 }
 
