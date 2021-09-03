@@ -7,7 +7,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 // Set of Material typography styles to start with
-val Typography = Typography(
+val TypographyLight = Typography(
+    h4 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 34.sp,
+        color = Black
+    ),
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -28,6 +33,11 @@ val Typography = Typography(
     */
 )
 val TypographyDark = Typography(
+    h4 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 34.sp,
+        color = White
+    ),
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
