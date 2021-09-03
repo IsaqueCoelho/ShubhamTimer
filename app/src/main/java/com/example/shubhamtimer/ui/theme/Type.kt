@@ -13,6 +13,11 @@ val TypographyLight = Typography(
         fontSize = 34.sp,
         color = Black
     ),
+    h5 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 24.sp,
+        color = Black
+    ),
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -36,6 +41,11 @@ val TypographyDark = Typography(
     h4 = TextStyle(
         fontWeight = FontWeight.Normal,
         fontSize = 34.sp,
+        color = White
+    ),
+    h5 = TextStyle(
+        fontWeight = FontWeight.Normal,
+        fontSize = 24.sp,
         color = White
     ),
     body1 = TextStyle(
