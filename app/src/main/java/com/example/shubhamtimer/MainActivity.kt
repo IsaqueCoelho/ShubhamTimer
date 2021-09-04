@@ -11,9 +11,11 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.shubhamtimer.ui.component.ConfirmButton
 import com.example.shubhamtimer.ui.component.TaskForm
 import com.example.shubhamtimer.ui.component.TaskTypeList
 import com.example.shubhamtimer.ui.component.TimerForm
@@ -52,6 +54,9 @@ fun MainContent() {
         TaskTypeList()
         Spacer(modifier = Modifier.height(64.dp))
         TimerForm()
+        ConfirmButton(
+            stringResource(id = R.string.new_task_button)
+        )
     }
 }
 
