@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.shubhamtimer.ui.theme.GreenA500
 import com.example.shubhamtimer.ui.theme.White
 
 
@@ -30,7 +31,7 @@ fun ConfirmButton(
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults
                 .textButtonColors(
-                    backgroundColor = MaterialTheme.colors.secondary
+                    backgroundColor = GreenA500
                 ),
             content = {
                 Text(

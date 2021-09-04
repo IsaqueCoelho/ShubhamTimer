@@ -80,7 +80,7 @@ fun setIconTitleColor(isSelected: Boolean, isDarkMode: Boolean): Color {
             GreenA700
         }
         isSelected -> {
-            GreenA400
+            GreenA500
         }
         isDarkMode -> {
             White
