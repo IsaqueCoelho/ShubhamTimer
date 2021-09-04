@@ -32,7 +32,7 @@ fun NewTaskForm() {
             ) {
                 Text(
                     modifier = Modifier.padding(16.dp),
-                    text = "New Task",
+                    text = stringResource(id = R.string.new_task_title),
                     style = MaterialTheme.typography.h4,
                     fontWeight = FontWeight.Bold,
                 )
