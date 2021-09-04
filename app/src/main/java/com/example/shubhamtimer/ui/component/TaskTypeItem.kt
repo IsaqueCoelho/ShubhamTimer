@@ -49,7 +49,7 @@ fun TaskTypeItem(
                 isDarkMode = isSystemInDarkTheme()
             ),
             modifier = Modifier
-                .size(40.dp)
+                .size(44.dp)
                 .clip(CircleShape)
                 .background(iconBackground),
         )
