@@ -22,7 +22,7 @@ fun TaskTypeList() {
         modifier = Modifier
             .background(MaterialTheme.colors.background)
             .fillMaxWidth()
-            .fillMaxHeight()
+            .wrapContentHeight()
     ) {
         Text(
             modifier = Modifier.padding(16.dp),
@@ -35,7 +35,7 @@ fun TaskTypeList() {
                 .padding(start = 16.dp, top = 8.dp)
                 .fillMaxWidth()
                 .wrapContentHeight(),
-            horizontalArrangement = Arrangement.SpaceAround
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             items(TaskTypeEnum.values().toList()) { item: TaskTypeEnum ->
                 TaskTypeItem(item)
