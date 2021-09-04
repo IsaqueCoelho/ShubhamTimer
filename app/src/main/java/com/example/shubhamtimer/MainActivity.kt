@@ -5,10 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -19,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.ui.component.TaskForm
 import com.example.shubhamtimer.ui.component.TaskTypeList
+import com.example.shubhamtimer.ui.component.TimerForm
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShubhamTimerTheme {
+
                 Scaffold(
                     backgroundColor = MaterialTheme.colors.background,
                     content = { MainContent() }
@@ -51,6 +50,8 @@ fun MainContent() {
         )
         TaskForm()
         TaskTypeList()
+        Spacer(modifier = Modifier.height(64.dp))
+        TimerForm()
     }
 }
 
