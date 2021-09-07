@@ -16,9 +16,9 @@ fun TimerForm() {
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        TimerItem("Hour")
-        TimerItem("Minute")
-        TimerItem("Second")
+        TimerFormItem("Hour")
+        TimerFormItem("Minute")
+        TimerFormItem("Second")
     }
 }
 

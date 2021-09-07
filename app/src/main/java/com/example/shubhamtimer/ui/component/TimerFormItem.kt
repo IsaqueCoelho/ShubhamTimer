@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 @Composable
-fun TimerItem(
+fun TimerFormItem(
     label: String = "Hour"
 ) {
     Column(
@@ -66,8 +66,8 @@ fun TimerItem(
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
 @Composable
-fun PreviewTimerItem() {
+fun PreviewTimerFormItem() {
     ShubhamTimerTheme {
-        TimerItem()
+        TimerFormItem()
     }
 }
