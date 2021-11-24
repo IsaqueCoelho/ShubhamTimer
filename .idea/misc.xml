@@ -74,11 +74,13 @@
         <entry key="../../../../layout/compose-model-1630795707046.xml" value="0.5009259259259259" />
         <entry key="../../../../layout/compose-model-1630795989967.xml" value="1.3886792452830188" />
         <entry key="../../../../layout/compose-model-1631050638880.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1637787060680.xml" value="0.1" />
+        <entry key="../../../../layout/compose-model-1637790151085.xml" value="0.4425925925925926" />
         <entry key="app/src/main/res/drawable/ic_round_star_outline.xml" value="0.2140625" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
