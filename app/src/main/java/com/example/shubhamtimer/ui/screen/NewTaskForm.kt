@@ -37,9 +37,10 @@ fun NewTaskForm() {
                     fontWeight = FontWeight.Bold,
                 )
                 TaskForm()
-                TaskTypeList()
                 Spacer(modifier = Modifier.height(64.dp))
                 TimerForm()
+                Spacer(modifier = Modifier.height(32.dp))
+                TaskTypeList()
                 ConfirmButton(
                     stringResource(id = R.string.new_task_button)
                 )
