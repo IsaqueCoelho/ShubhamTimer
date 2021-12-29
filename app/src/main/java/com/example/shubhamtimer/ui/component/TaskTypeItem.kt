@@ -25,9 +25,10 @@ import com.example.shubhamtimer.ui.theme.*
 
 @Composable
 fun TaskTypeItem(
-    item: TaskTypeEnum = TaskTypeEnum.PRIORITY
+    item: TaskTypeEnum = TaskTypeEnum.PRIORITY,
+    isSelected: Boolean = false,
+    performClick: (item: TaskTypeEnum) -> Unit
 ) {
-    var isSelected by remember { mutableStateOf(false) }
 
     val iconBackground: Color by animateColorAsState(
         if (isSelected) MaterialTheme.colors.secondaryVariant else Color.Transparent,
@@ -37,7 +38,7 @@ fun TaskTypeItem(
         modifier = Modifier
             .padding(8.dp)
             .clickable {
-                isSelected = !isSelected
+                performClick(item)
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -103,6 +104,6 @@ fun setIconTitleColor(isSelected: Boolean, isDarkMode: Boolean): Color {
 @Composable
 fun PreviewIconItem() {
     ShubhamTimerTheme {
-        TaskTypeItem()
+        TaskTypeItem(performClick = {})
     }
 }
