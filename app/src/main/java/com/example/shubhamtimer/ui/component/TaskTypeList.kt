@@ -17,7 +17,9 @@ import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 
 @Composable
-fun TaskTypeList() {
+fun TaskTypeList(
+    selectedTaskType: (taskType: TaskTypeEnum) -> Unit
+) {
     Column(
         modifier = Modifier
             .background(MaterialTheme.colors.background)
@@ -46,6 +48,7 @@ fun TaskTypeList() {
                     isSelected = item == selectedItem,
                     performClick = {
                         selectedItem = it
+                        selectedTaskType(it)
                     }
                 )
             }
@@ -65,6 +68,6 @@ fun TaskTypeList() {
 @Composable
 fun PreviewTaskTypeList() {
     ShubhamTimerTheme {
-        TaskTypeList()
+        TaskTypeList(selectedTaskType = {})
     }
 }
