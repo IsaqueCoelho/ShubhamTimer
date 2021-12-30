@@ -23,7 +23,8 @@ import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 @Composable
 fun NewTaskForm() {
 
-    var rememberTaskType by remember { mutableStateOf(TaskTypeEnum.PRIORITY)}
+    var rememberTaskDescriptionForm by remember { mutableStateOf(Pair("", "")) }
+    var rememberTaskType by remember { mutableStateOf(TaskTypeEnum.PRIORITY) }
 
     Scaffold(
         backgroundColor = MaterialTheme.colors.background,
@@ -40,7 +41,9 @@ fun NewTaskForm() {
                     style = MaterialTheme.typography.h4,
                     fontWeight = FontWeight.Bold,
                 )
-                TaskForm()
+                TaskForm(taskDescriptionForm = {
+
+                })
                 Spacer(modifier = Modifier.height(64.dp))
                 TimerForm()
                 Spacer(modifier = Modifier.height(32.dp))
