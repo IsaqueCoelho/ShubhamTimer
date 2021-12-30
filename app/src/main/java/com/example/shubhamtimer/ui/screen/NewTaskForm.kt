@@ -42,7 +42,7 @@ fun NewTaskForm() {
                     fontWeight = FontWeight.Bold,
                 )
                 TaskForm(taskDescriptionForm = {
-
+                    rememberTaskDescriptionForm = it
                 })
                 Spacer(modifier = Modifier.height(64.dp))
                 TimerForm()
