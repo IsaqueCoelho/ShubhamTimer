@@ -1,4 +1,4 @@
-package com.example.shubhamtimer.ui
+package com.example.shubhamtimer.ui.enums
 
 import androidx.annotation.DrawableRes
 import com.example.shubhamtimer.R

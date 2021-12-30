@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.R
-import com.example.shubhamtimer.ui.TaskTypeEnum
+import com.example.shubhamtimer.ui.enums.TaskTypeEnum
 import com.example.shubhamtimer.ui.component.ConfirmButton
 import com.example.shubhamtimer.ui.component.TaskForm
 import com.example.shubhamtimer.ui.component.TaskTypeList
