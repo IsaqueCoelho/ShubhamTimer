@@ -30,14 +30,30 @@ fun TimerFormItem(
             .wrapContentHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        var taskNameValue by remember { mutableStateOf("") }
+        var taskTimerValue by remember { mutableStateOf("") }
+
+        val mustShowError: Boolean =
+            if (taskTimerValue.isEmpty()) {
+                false
+            } else {
+                when (item) {
+                    TaskTimeEnum.HOUR -> {
+                        taskTimerValue.toInt() > 23
+                    }
+                    else -> {
+                        taskTimerValue.toInt() > 59
+                    }
+                }
+            }
 
         OutlinedTextField(
             modifier = Modifier
                 .width(71.dp)
                 .background(MaterialTheme.colors.background),
-            value = taskNameValue,
-            onValueChange = { taskNameValue = it },
+            value = taskTimerValue,
+            onValueChange = {
+                taskTimerValue = it
+            },
             textStyle = MaterialTheme.typography.h4,
             singleLine = true,
             shape = MaterialTheme.shapes.small,
@@ -48,7 +64,8 @@ fun TimerFormItem(
                     style = MaterialTheme.typography.h4,
                     fontWeight = FontWeight.Bold,
                 )
-            }
+            },
+            isError = mustShowError
         )
 
         Text(
