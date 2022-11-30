@@ -2,7 +2,13 @@
     <string name="app_name">ShubhamTimer</string>
 
     <string name="new_task_title">New Task</string>
-    <string name="new_task_button">Start</string>
+    <string name="new_task_button">Confirm</string>
     <string name="taskform_name">Task Name</string>
     <string name="taskform_description">Task Description</string>
+
+    <string name="timer_display_title">Timer</string>
+
+    <string name="timer_display_button_start">Start</string>
+    <string name="timer_display_button_cancel">Cancel</string>
+    <string name="timer_display_button_pause">Pause</string>
 </resources>
