@@ -18,6 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.ui.enums.TaskTimeEnum
+import com.example.shubhamtimer.ui.mask.TimerMaskVisualTransformation
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 @Composable
@@ -65,7 +66,8 @@ fun TimerFormItem(
                     fontWeight = FontWeight.Bold,
                 )
             },
-            isError = mustShowError
+            isError = mustShowError,
+            // visualTransformation = TimerMaskVisualTransformation()
         )
 
         Text(
