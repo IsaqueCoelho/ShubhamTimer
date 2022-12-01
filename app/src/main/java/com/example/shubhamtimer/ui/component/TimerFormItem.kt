@@ -18,12 +18,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.ui.enums.TaskTimeEnum
-import com.example.shubhamtimer.ui.mask.TimerMaskVisualTransformation
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 @Composable
 fun TimerFormItem(
-    item: TaskTimeEnum = TaskTimeEnum.HOUR
+    item: TaskTimeEnum = TaskTimeEnum.HOUR,
+    itemTime: (String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -73,6 +73,7 @@ fun TimerFormItem(
         Text(
             text = item.title,
         )
+        itemTime(taskTimerValue)
     }
 }
 
@@ -88,6 +89,8 @@ fun TimerFormItem(
 @Composable
 fun PreviewTimerFormItem() {
     ShubhamTimerTheme {
-        TimerFormItem()
+        TimerFormItem(
+            itemTime = {}
+        )
     }
 }

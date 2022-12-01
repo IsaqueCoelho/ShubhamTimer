@@ -20,7 +20,7 @@ import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 @Composable
 fun TaskForm(
-    taskDescriptionForm: (Pair<String, String>) -> Unit
+    taskDescriptionForm: (String, String) -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -47,9 +47,7 @@ fun TaskForm(
             modifier = Modifier.fillMaxWidth(),
         )
 
-        taskDescriptionForm(Pair(
-            taskNameValue, taskDescriptionValue
-        ))
+        taskDescriptionForm(taskNameValue, taskDescriptionValue)
     }
 }
 
@@ -65,6 +63,6 @@ fun TaskForm(
 @Composable
 fun PreviewForms() {
     ShubhamTimerTheme {
-        TaskForm(taskDescriptionForm = {})
+        TaskForm(taskDescriptionForm = { _, _ -> })
     }
 }

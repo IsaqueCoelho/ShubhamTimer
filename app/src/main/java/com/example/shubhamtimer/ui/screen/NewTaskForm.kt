@@ -1,6 +1,7 @@
 package com.example.shubhamtimer.ui.screen
 
 import android.content.res.Configuration
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -9,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,8 +28,10 @@ fun NewTaskForm(
     navigateUp: (Pair<String, String>, TaskTypeEnum, String) -> Unit
 ) {
 
-    var rememberTaskDescriptionForm by remember { mutableStateOf(Pair("", "")) }
+    var rememberTaskTitleForm by remember { mutableStateOf("") }
+    var rememberTaskDescriptionForm by remember { mutableStateOf("") }
     var rememberTaskType by remember { mutableStateOf(TaskTypeEnum.PRIORITY) }
+    var rememberTaskTime by remember { mutableStateOf("00:00:00") }
 
     Scaffold(
         backgroundColor = MaterialTheme.colors.background,
@@ -44,11 +48,14 @@ fun NewTaskForm(
                     style = MaterialTheme.typography.h4,
                     fontWeight = FontWeight.Bold,
                 )
-                TaskForm(taskDescriptionForm = {
-                    rememberTaskDescriptionForm = it
+                TaskForm(taskDescriptionForm = { title, description ->
+                    rememberTaskTitleForm = title
+                    rememberTaskDescriptionForm = description
                 })
                 Spacer(modifier = Modifier.height(64.dp))
-                TimerForm()
+                TimerForm(timer = {
+                    rememberTaskTime = it
+                })
                 Spacer(modifier = Modifier.height(32.dp))
                 TaskTypeList(selectedTaskType = {
                     rememberTaskType = it
@@ -64,14 +71,29 @@ fun NewTaskForm(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Bottom
             ) {
+
+                val context = LocalContext.current
+
                 ComponentButton(
                     text = stringResource(id = R.string.new_task_button),
                     onClickAction = {
-                        navigateUp(
-                            rememberTaskDescriptionForm,
-                            rememberTaskType,
-                            "00:07:77"
-                        )
+
+                        if (rememberTaskTitleForm.isNotEmpty() &&
+                            rememberTaskDescriptionForm.isNotEmpty() &&
+                            rememberTaskTime != "00:00:00"
+                        ) {
+                            navigateUp(
+                                Pair(rememberTaskTitleForm, rememberTaskDescriptionForm),
+                                rememberTaskType,
+                                rememberTaskTime
+                            )
+                        } else {
+                            Toast.makeText(
+                                context,
+                                "Preencha todos os campos corretamente",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
                     }
                 )
             }
