@@ -15,6 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.R
+import com.example.shubhamtimer.ui.component.TaskTypeItem
 import com.example.shubhamtimer.ui.component.TimerDisplayButtons
 import com.example.shubhamtimer.ui.component.TimerDisplayComponent
 import com.example.shubhamtimer.ui.enums.TaskTypeEnum
@@ -25,7 +26,8 @@ import com.example.shubhamtimer.ui.theme.White
 
 @Composable
 fun TimerDisplay(
-    taskeTypeEnum: TaskTypeEnum = TaskTypeEnum.PRIORITY,
+    taskDescription: Pair<String, String>,
+    taskeType: TaskTypeEnum = TaskTypeEnum.PRIORITY,
     timeInSeconds: Int = 0
 ) {
 
@@ -49,7 +51,7 @@ fun TimerDisplay(
                                 tint = if (isSystemInDarkTheme()) White else Black,
                             )
                         },
-                        onClick = { /*TODO*/ }
+                        onClick = { }
                     )
 
                     Text(
@@ -63,6 +65,24 @@ fun TimerDisplay(
         },
         content = {
             Row(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                TaskTypeItem(
+                    item = taskeType,
+                    performClick = {}
+                )
+                Column(
+                    modifier = Modifier.padding(start = 16.dp)
+                ) {
+                    Text(
+                        text = taskDescription.first,
+                        style = MaterialTheme.typography.body1,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Text(text = taskDescription.second)
+                }
+            }
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight(),
@@ -73,7 +93,6 @@ fun TimerDisplay(
                     timer = "00:00:00",
                     progress = 1f
                 )
-                Text(text = "alow")
             }
         },
         bottomBar = {
@@ -100,6 +119,13 @@ fun TimerDisplay(
 @Composable
 fun PreviewTimerDisplay() {
     ShubhamTimerTheme {
-        TimerDisplay()
+        TimerDisplay(
+            taskDescription = Pair(
+                "Title Loren Ipsum",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            ),
+            taskeType = TaskTypeEnum.WORK,
+            timeInSeconds = 120
+        )
     }
 }
