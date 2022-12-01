@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.shubhamtimer.R
 import com.example.shubhamtimer.ui.component.ComponentButton
 import com.example.shubhamtimer.ui.component.TaskForm
@@ -22,7 +23,9 @@ import com.example.shubhamtimer.ui.enums.TaskTypeEnum
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 @Composable
-fun NewTaskForm() {
+fun NewTaskForm(
+    navigateUp: () -> Unit
+) {
 
     var rememberTaskDescriptionForm by remember { mutableStateOf(Pair("", "")) }
     var rememberTaskType by remember { mutableStateOf(TaskTypeEnum.PRIORITY) }
@@ -64,7 +67,7 @@ fun NewTaskForm() {
             ) {
                 ComponentButton(
                     text = stringResource(id = R.string.new_task_button),
-                    onClickAction = {}
+                    onClickAction = { navigateUp() }
                 )
             }
         }
@@ -83,6 +86,8 @@ fun NewTaskForm() {
 @Composable
 fun PreviewMainContent() {
     ShubhamTimerTheme {
-        NewTaskForm()
+        NewTaskForm(
+            navigateUp = {}
+        )
     }
 }
