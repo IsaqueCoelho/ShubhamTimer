@@ -8,6 +8,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -15,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.R
 import com.example.shubhamtimer.ui.component.TimerDisplayButtons
+import com.example.shubhamtimer.ui.component.TimerDisplayComponent
 import com.example.shubhamtimer.ui.enums.TaskTypeEnum
 import com.example.shubhamtimer.ui.theme.Black
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
@@ -35,7 +37,6 @@ fun TimerDisplay(
                     .background(MaterialTheme.colors.background)
                     .padding(16.dp)
                     .fillMaxWidth()
-                    .fillMaxHeight()
             ) {
                 Row {
                     IconButton(
@@ -60,7 +61,21 @@ fun TimerDisplay(
                 }
             }
         },
-        content = {},
+        content = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .fillMaxHeight(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                TimerDisplayComponent(
+                    timer = "00:00:00",
+                    progress = 1f
+                )
+                Text(text = "alow")
+            }
+        },
         bottomBar = {
             Column(modifier = Modifier.padding(16.dp)) {
                 TimerDisplayButtons(

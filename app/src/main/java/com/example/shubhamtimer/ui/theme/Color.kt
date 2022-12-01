@@ -12,4 +12,4 @@ val GreenA500 = Color(0xFF4CAF50)
 val GreenA700 = Color(0xFF388E3C)
 
 val Black = Color(0xFF263238)
-val White = Color(0xFFEEEEEE)
+val White = Color(0xFFE0E0E0)
