@@ -3,9 +3,12 @@ package com.example.shubhamtimer.ui.navigations
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.shubhamtimer.ui.enums.TaskTypeEnum
 import com.example.shubhamtimer.ui.screen.NewTaskForm
 import com.example.shubhamtimer.ui.screen.TimerDisplay
 
@@ -20,25 +23,36 @@ fun NavigationGraph() {
     ) {
         composable(route = "new_task") {
             NewTaskForm(
-                navigateUp = {
-                    navController.navigate("time_display")
+                navigateUp = { taskDescriptions, taskType, time ->
+                    navController.navigate("time_display/${taskDescriptions.first}/${taskDescriptions.second}/${taskType.name}/$time")
                 }
             )
         }
-        composable(route = "time_display") {
+        composable(
+            route = "time_display/{title}/{description}/{task_type}/{time}",
+            arguments = listOf(
+                navArgument("title") { type = NavType.StringType },
+                navArgument("description") { type = NavType.StringType },
+                navArgument("task_type") { type = NavType.StringType },
+                navArgument("time") { type = NavType.StringType },
+            )
+        ) { backStackEntry ->
+
+            val title = backStackEntry.arguments?.getString("title")
+            requireNotNull(title) { "title Name parameter wasn't found. Please make sure it's set!" }
+            val description = backStackEntry.arguments?.getString("description")
+            requireNotNull(description) { "description Name parameter wasn't found. Please make sure it's set!" }
+            val task_type = backStackEntry.arguments?.getString("task_type")
+            requireNotNull(task_type) { "task_type Name parameter wasn't found. Please make sure it's set!" }
+            val time = backStackEntry.arguments?.getString("time")
+            requireNotNull(time) { "time Name parameter wasn't found. Please make sure it's set!" }
+
             TimerDisplay(
+                taskDescription = Pair(title, description),
+                taskeType = TaskTypeEnum.valueOf(task_type),
+                time = time,
                 onBackPress = { navController.navigate("new_task") }
             )
         }
-        /*composable(route = Screen.NewTask.route){ backStackEntry ->
-            val groupName = backStackEntry.arguments?.getString("group_name")
-            requireNotNull(groupName) { "Group Name parameter wasn't found. Please make sure it's set!" }
-            NewTaskStackContent(navController = navController, groupName)
-        }
-        composable(route = Screen.Group.route){ backStackEntry ->
-            val groupId = backStackEntry.arguments?.getString("group_id")
-            requireNotNull(groupId) { "Group Name parameter wasn't found. Please make sure it's set!" }
-            GroupTaskStackContent(navController = navController, groupId)
-        }*/
     }
 }

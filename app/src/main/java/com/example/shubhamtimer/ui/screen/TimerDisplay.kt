@@ -14,7 +14,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.shubhamtimer.R
 import com.example.shubhamtimer.ui.component.TaskTypeItem
 import com.example.shubhamtimer.ui.component.TimerDisplayButtons
@@ -29,7 +28,7 @@ import com.example.shubhamtimer.ui.theme.White
 fun TimerDisplay(
     taskDescription: Pair<String, String> = Pair("", ""),
     taskeType: TaskTypeEnum = TaskTypeEnum.PRIORITY,
-    timeInSeconds: Int = 0,
+    time: String = "00:00:00",
     onBackPress: () -> Unit
 ) {
 
@@ -92,7 +91,7 @@ fun TimerDisplay(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 TimerDisplayComponent(
-                    timer = "00:00:00",
+                    timer = time,
                     progress = 1f
                 )
             }
@@ -127,7 +126,7 @@ fun PreviewTimerDisplay() {
                 "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             ),
             taskeType = TaskTypeEnum.WORK,
-            timeInSeconds = 120,
+            time = "00:07:00",
             onBackPress = {}
         )
     }
