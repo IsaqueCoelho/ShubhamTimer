@@ -11,4 +11,5 @@
     <string name="timer_display_button_start">Start</string>
     <string name="timer_display_button_cancel">Cancel</string>
     <string name="timer_display_button_pause">Pause</string>
+    <string name="timer_display_button_resume">Resume</string>
 </resources>

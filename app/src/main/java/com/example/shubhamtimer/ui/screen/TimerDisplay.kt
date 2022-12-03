@@ -22,6 +22,7 @@ import com.example.shubhamtimer.ui.enums.TaskTypeEnum
 import com.example.shubhamtimer.ui.theme.Black
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 import com.example.shubhamtimer.ui.theme.White
+import com.example.shubhamtimer.viewmodel.TimerDisplayViewModel
 
 
 @Composable
@@ -31,6 +32,8 @@ fun TimerDisplay(
     time: String = "00:00:00",
     onBackPress: () -> Unit
 ) {
+
+    val viewModel = TimerDisplayViewModel(timerDisplaying = time)
 
     Scaffold(
         backgroundColor = MaterialTheme.colors.background,
@@ -90,18 +93,29 @@ fun TimerDisplay(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                val uiState = viewModel.uiState
                 TimerDisplayComponent(
-                    timer = time,
-                    progress = 1f
+                    timer = uiState.timeToDisplay,
+                    progress = uiState.progressBar
                 )
             }
         },
         bottomBar = {
             Column(modifier = Modifier.padding(16.dp)) {
                 TimerDisplayButtons(
-                    onStartClick = {},
-                    onCancelClick = {},
-                    onPauseClick = {}
+                    onStartClick = {
+                        viewModel.startTime(timer = time)
+                    },
+                    onCancelClick = {
+                        viewModel.cancelTimer()
+                    },
+                    onPauseClick = {
+                        val uiState = viewModel.uiState
+                        when {
+                            uiState.counting -> viewModel.pauseTimer()
+                            else -> viewModel.startTime(timer = uiState.timeToDisplay)
+                        }
+                    }
                 )
             }
         }

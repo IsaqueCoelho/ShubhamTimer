@@ -21,6 +21,9 @@ fun TimerDisplayButtons(
 ) {
 
     var displayGroup by remember { mutableStateOf(false) }
+    var pauseButtonStatus by remember {
+        mutableStateOf(true)
+    }
 
     Row(
         modifier = Modifier.fillMaxWidth(),
@@ -38,9 +41,14 @@ fun TimerDisplayButtons(
                     }
                 )
                 ComponentButton(
-                    text = stringResource(id = R.string.timer_display_button_pause),
+                    text = if (pauseButtonStatus) {
+                        stringResource(id = R.string.timer_display_button_pause)
+                    } else stringResource(
+                        id = R.string.timer_display_button_resume
+                    ),
                     buttonColor = MaterialTheme.colors.secondaryVariant,
                     onClickAction = {
+                        pauseButtonStatus = !pauseButtonStatus
                         onPauseClick()
                     }
                 )

@@ -18,6 +18,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.shubhamtimer.ui.enums.TaskTimeEnum
+import com.example.shubhamtimer.ui.mask.TimerMaskVisualTransformation
 import com.example.shubhamtimer.ui.theme.ShubhamTimerTheme
 
 @Composable
@@ -32,20 +33,6 @@ fun TimerFormItem(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         var taskTimerValue by remember { mutableStateOf("") }
-
-        val mustShowError: Boolean =
-            if (taskTimerValue.isEmpty()) {
-                false
-            } else {
-                when (item) {
-                    TaskTimeEnum.HOUR -> {
-                        taskTimerValue.toInt() > 23
-                    }
-                    else -> {
-                        taskTimerValue.toInt() > 59
-                    }
-                }
-            }
 
         OutlinedTextField(
             modifier = Modifier
@@ -66,8 +53,7 @@ fun TimerFormItem(
                     fontWeight = FontWeight.Bold,
                 )
             },
-            isError = mustShowError,
-            // visualTransformation = TimerMaskVisualTransformation()
+            visualTransformation = TimerMaskVisualTransformation(item)
         )
 
         Text(

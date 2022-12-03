@@ -4,56 +4,34 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
+import com.example.shubhamtimer.ui.enums.TaskTimeEnum
 
-class TimerMaskVisualTransformation : VisualTransformation {
+class TimerMaskVisualTransformation(private val item: TaskTimeEnum) : VisualTransformation {
     override fun filter(text: AnnotatedString): TransformedText {
-        // Making XX string.
 
-        val lenght = text.text.length
+        val parsedText = if (text.text.isEmpty()) 0 else text.text.toInt()
 
-        val trimmed = text.text
-        var out = ""
-
-        if (lenght == 1) {
-            out += "0${trimmed[0]}"
-        }
-
-        if (lenght == 2) {
-            out += trimmed
-        }
-
-        if (lenght > 2 && trimmed[0] == '0') {
-            for (textCount in trimmed.indices){
-                if (textCount > 0){
-                    out += trimmed[textCount]
-                }
+        val finalText = when (item) {
+            TaskTimeEnum.HOUR -> {
+                if (parsedText > 23) "00" else text.text
+            }
+            TaskTimeEnum.MINUTE,
+            TaskTimeEnum.SECOND -> {
+                if (parsedText > 59) "00" else text.text
             }
         }
 
-        val timerOffsetTranslator = object : OffsetMapping {
-            override fun originalToTransformed(offset: Int): Int {
+        val timeOffsetMapping = object : OffsetMapping {
+            override fun originalToTransformed(offset: Int): Int = offset
 
-//                if (offset == 1) return offset + 1
-                if (offset == 2) return offset
-                if (offset == 3) return offset - 1
+            override fun transformedToOriginal(offset: Int): Int = offset
 
-                return offset
-//
-//                if (offset == 2) return offset
-//                if (offset < 2) return offset + 1
-//                return 2
-            }
-
-            override fun transformedToOriginal(offset: Int): Int {
-//
-//                if (offset == 2) return offset + 1
-//                if (offset == 2) return offset
-//                if (offset == 3) return offset - 1
-
-                return offset
-            }
         }
 
-        return TransformedText(AnnotatedString(out), timerOffsetTranslator)
+        return TransformedText(
+            AnnotatedString(finalText),
+            timeOffsetMapping
+        )
     }
+
 }
